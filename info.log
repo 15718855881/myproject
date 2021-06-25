@@ -1,0 +1,18 @@
+2021-06-25 17:01:43.514  INFO 11596 --- [main] c.c.c.SmartCityServiceApplicationTests   : Starting SmartCityServiceApplicationTests using Java 1.8.0_201 on DESKTOP-LOIKE0N with PID 11596 (started by nolucky in D:\projectyz\smart-city-service\myproject)
+2021-06-25 17:01:43.515 DEBUG 11596 --- [main] c.c.c.SmartCityServiceApplicationTests   : Running with Spring Boot v2.5.1, Spring v5.3.8
+2021-06-25 17:01:43.516  INFO 11596 --- [main] c.c.c.SmartCityServiceApplicationTests   : The following profiles are active: dev
+2021-06-25 17:01:48.263  INFO 11596 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-25 17:01:48.621  INFO 11596 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-06-25 17:01:48.926  INFO 11596 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-25 17:01:48.959  INFO 11596 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-25 17:01:48.997  INFO 11596 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-25 17:01:49.253  INFO 11596 --- [main] c.c.c.SmartCityServiceApplicationTests   : Started SmartCityServiceApplicationTests in 6.267 seconds (JVM running for 7.597)
+2021-06-25 17:02:11.954  INFO 13548 --- [main] c.c.c.SmartCityServiceApplicationTests   : Starting SmartCityServiceApplicationTests using Java 1.8.0_201 on DESKTOP-LOIKE0N with PID 13548 (started by nolucky in D:\projectyz\smart-city-service\myproject)
+2021-06-25 17:02:11.954 DEBUG 13548 --- [main] c.c.c.SmartCityServiceApplicationTests   : Running with Spring Boot v2.5.1, Spring v5.3.8
+2021-06-25 17:02:11.954  INFO 13548 --- [main] c.c.c.SmartCityServiceApplicationTests   : The following profiles are active: dev
+2021-06-25 17:02:16.066  INFO 13548 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2021-06-25 17:02:16.388  INFO 13548 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-06-25 17:02:16.739  INFO 13548 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-06-25 17:02:16.774  INFO 13548 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-06-25 17:02:16.828  INFO 13548 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-06-25 17:02:17.035  INFO 13548 --- [main] c.c.c.SmartCityServiceApplicationTests   : Started SmartCityServiceApplicationTests in 5.482 seconds (JVM running for 6.594)

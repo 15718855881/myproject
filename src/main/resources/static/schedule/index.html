@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>schedule</title>
+	<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		#schedule-box {
+			width: 320px;
+			margin: 0 auto;
+			padding: 35px 20px;
+			font-size: 13px;
+		}
+
+		.schedule-hd {
+			display: flex;
+			justify-content: space-between;
+			padding: 0 15px;
+		}
+
+		.today {
+			flex: 1;
+			text-align: center;
+		}
+
+		.ul-box {
+			overflow: hidden;
+		}
+
+		.ul-box>li {
+			float: left;
+			width: 14.28%;
+			text-align: center;
+			padding: 5px 0;
+		}
+
+		.other-month {
+			color: #999999;
+		}
+
+		.disabled {
+			pointer-events: none;
+			background-color: #eeeeee;
+			color: #999999;
+		}
+
+		.current-month {
+			color: #333333;
+		}
+
+		.today-style {
+			border-radius: 50%;
+			background: #58d321;
+		}
+
+		.arrow {
+			cursor: pointer;
+		}
+
+		.dayStyle {
+			display: inline-block;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 35px;
+			cursor: pointer;
+		}
+
+		.current-month>.dayStyle:hover {
+			background: #00BDFF;
+			color: #ffffff;
+		}
+
+		.today-flag {
+			background: #00C2B1;
+			color: #fff;
+		}
+
+		.boxshaw {
+			box-shadow: 2px 2px 15px 2px #e3e3e3;
+		}
+
+		.selected-style {
+			background-color: #ffba5a;
+			color: #ffffff;
+		}
+
+		.active-style {
+			background: #00BDFF;
+			color: #ffffff;
+		}
+
+		#h3Ele {
+			text-align: center;
+			padding: 10px;
+		}
+
+		.today {
+			text-align: center;
+			color: #8ac6d1;
+			padding: 5px 0 0;
+			font-weight: bold;
+			cursor: pointer;
+			font-size: 15px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id='schedule-box' class="boxshaw">
+
+	</div>
+	<div>
+		<h3 id='h3Ele'></h3>
+	</div>
+</body>
+<script src="schedule.js"></script>
+<script>
+	var mySchedule = new Schedule({
+		el: '#schedule-box',	//容器元素
+		date: '2018-09-20',		//当前日期
+		disabledBefore: '2018-07-10',	//禁用此日期之前
+		disabledAfter: '2018-11-15',	//禁用此日期之后
+		disabledDate: ['2018-8-20', '2018-8-2', '2018-8-23'],	//禁用的日期
+		selectedDate: ['2018-10-21', '2018-10-22', '2018-10-23'],	//选中的日期
+		showToday: true,	//回到今天
+		clickCb: function (date) {
+			document.querySelector('#h3Ele').innerHTML = '日期：' + date
+		},
+		nextMonthCb: function (currentYear, currentMonth) {
+			console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+		},
+		nextYeayCb: function (currentYear, currentMonth) {
+			console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+		},
+		prevMonthCb: function (currentYear, currentMonth) {
+			console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+		},
+		prevYearCb: function (currentYear, currentMonth) {
+			console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+		}
+	});
+</script>
+
+</html>

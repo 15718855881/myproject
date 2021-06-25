@@ -1,0 +1,11 @@
+umscommon:
+  requesttype:
+    post: post
+    get: get
+    put: put
+    delete: delete
+  uri:
+    login: /user/sdk/login
+    user_other_info: /user/sdk/getUserOtherInfo
+    adduser: /user/sdk/addUser
+    lock_user: /user/sdk/lockUser

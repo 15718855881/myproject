@@ -1,0 +1,18 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    root: info
+    com.chinaoly.city: debug
+  file:
+    name: info.log
+
+ums:
+  url: http://ums-dev.citybrain.com:7001
+  key: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJ6hKZJWonBiqJ5hvvCGB3LUlyyYCo8m9Y6lpR/cYbe9yfogKIxFs9ptbZ4rTfV5N9ulMvR4XqDl7c6+AhVueOi9p1flnoaKFGAhM4Ym58yEum2eVSwQifP/NKTdsh4/9MOIrJeoOLDlQXBJfdgeXI8s2c7MHPGWNDvAtq1wwIdzAgMBAAECgYBMc9w3XW3YwJQIEZAXGGHKpE9f/L9KEzrST19wJaUrC1unI4ynXoi6Q3dLfg+KuauEPvB6BvGEloyw0b7rWV0H/OxaUzgLVE4o5uAi7jpMBwoGxgJOE5y3EDYCzWRlK+bSjqLvrX4QbzgJlHEColhTxyt7Otug1cgS17S8YozbYQJBAMwj4RyXfJRXbor1r3xg+SDIutFMig2Xphf9sOP8ktwj/lb/Wuu3fHV/pIfM4GGzQ2tB9yY0T84i1wrHA+WdcXkCQQDG7Ye+fPnxH1fUUPvZJu1Qq5vx5u6ir9KjE5doFmzlo59dbkrZ/gUswimKyME+wK9/qHQ/U6J/4PQm+E0jQVFLAkAgsAYVy/P41N8whRKqeeSqaTnw1a6taoEACnFOsFzbvy+0woLOh7z4G44+6IFtY4UCIbfveCTnPxDr+t4W4FURAkB2IHUcS9CMO8WHAbQcJj6ESfOnuS96Ehht2GNvXum5j+lBrQ3r1ykxg/bxP/dpETjmAJ1PQZXchDPXtFjyF4ZzAkEAqDkN2UXTPp2Q5RT4wXVHcVXCH7uXcGdc/IQHNAGDValdnXRjNOSFv4WZxVlmhiFi0eRovTin98ILHEygYiRaMQ==
+  app.code: syaxxh
+

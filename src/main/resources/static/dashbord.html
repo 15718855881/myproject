@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>北京亦庄</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <style>
+        #app{
+            font-size: .18rem;
+            color: #cccccc;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #bg{
+            position:fixed;
+            width:100%;
+            height:100%;
+        }
+        .status{
+            position: absolute;
+            right: 0.5rem;
+            top: .15rem;
+            height: 40px;
+            font-size: .18rem;
+            color: #d1ebfe;
+        }
+        .content{
+            display: flex;
+            width: 100%;
+            position: absolute;
+            top: 1.5rem;
+        }
+        .content .left .top{
+            width: 4.2rem;
+            height: 3rem;
+            border: 1px solid #3376ad;
+            border-radius: 5px;
+        }
+        .content .left .bottom{
+            width: 4.2rem;
+            height: 3rem;
+            border: 1px solid #3376ad;
+            border-radius: 5px;
+            margin-top: 0.3rem;
+        }
+
+        .content .right .top{
+            width: 4.2rem;
+            height: 3rem;
+            border: 1px solid #3376ad;
+            border-radius: 5px;
+        }
+        .content .right .bottom{
+            width: 4.2rem;
+            height: 3rem;
+            border: 1px solid #3376ad;
+            border-radius: 5px;
+            margin-top: 0.3rem;
+        }
+
+        .content .text{
+            position: absolute;
+            top: .25rem;
+            left: .7rem;
+            font-size: 0.25rem;
+            color: white;
+        }
+        .content .div_c{
+            line-height: 0.5rem;
+            margin: 0.2rem 0 0 0.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .content .right .top .mymsg{
+            text-align: center;
+            line-height:0.4rem;
+            position: relative;
+
+        }
+        .content .right .top .mymsg div{
+            display: inline-block;
+            width: 1.4rem;
+            height: 0.4rem;
+            background-color: #285c91;
+            color: white;
+            text-align: center;
+            line-height:0.4rem;
+            cursor: pointer;
+        }
+
+        .mymsg .number{
+            position: absolute;
+            top: 0;
+            left: 1.6rem;
+            width: 0.3rem!important;
+            height: 0.3rem!important;
+            background-color: red!important;
+            border-radius: 5px;
+            color: white;
+            line-height: 0.3rem!important;
+        }
+
+
+
+        ul {
+            list-style: none;
+        }
+
+        #schedule-box {
+            width: 3.5rem;
+            margin: 0 auto;
+            padding: 5px;
+            font-size: 13px;
+        }
+
+        .schedule-hd {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+
+        .today {
+            flex: 1;
+            text-align: center;
+        }
+
+        .ul-box {
+            overflow: hidden;
+        }
+
+        .ul-box>li {
+            float: left;
+            width: 14.28%;
+            text-align: center;
+        }
+
+        .other-month {
+            color: #999999;
+        }
+
+        .disabled {
+            pointer-events: none;
+            background-color: #eeeeee;
+            color: #999999;
+        }
+
+        .today-style {
+            border-radius: 50%;
+            background: #58d321;
+        }
+
+        .arrow {
+            cursor: pointer;
+        }
+
+        .dayStyle {
+            display: inline-block;
+            width: 0.35rem;
+            height: 0.35rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height:0.35rem;
+            cursor: pointer;
+        }
+
+        .current-month>.dayStyle:hover {
+            background: #00BDFF;
+            color: #ffffff;
+        }
+
+        .today-flag {
+            background: #00C2B1;
+            color: #fff;
+        }
+
+        .boxshaw {
+            color: white;
+        }
+
+        .selected-style {
+            background-color: #ffba5a;
+            color: #ffffff;
+        }
+
+        .active-style {
+            background: #00BDFF;
+            color: #ffffff;
+        }
+
+        #h3Ele {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .today {
+            text-align: center;
+            color: #8ac6d1;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .box{
+            width: 100%;
+            position: fixed;
+            top: 7.5rem;
+            color: white;
+            display: flex;
+            justify-content: center;
+            /*animation: animate 5s ease forwards;*/
+        }
+
+
+
+        .box1{
+            height: 0.9rem;
+            width: 2.0rem;
+            background: url("img/icon2.png") center no-repeat;
+            background-size: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: animate 6s forwards;
+            margin-top: 1.7rem;
+            opacity: 0;
+        }
+        @keyframes animate {
+            0% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            50% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            100% {
+                margin-top: 0rem;
+                opacity: 1;
+            }
+        }
+
+
+        .box2{
+            height: 0.9rem;
+            width: 2.0rem;
+            background: url("img/icon2.png") center no-repeat;
+            background-size: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin: 1.7rem 1rem 0 1rem;
+            animation: animate2 7s forwards;
+            opacity: 0;
+        }
+
+        @keyframes animate2 {
+            0% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            50% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            100% {
+                margin-top: 0rem;
+                opacity: 1;
+            }
+        }
+
+        .box3{
+            height: 0.9rem;
+            width: 2.0rem;
+            background: url("img/icon2.png") center no-repeat;
+            background-size: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: animate3 8s forwards;
+            margin-top: 1.7rem;
+            opacity: 0;
+        }
+        @keyframes animate3 {
+            0% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            50% {
+                margin-top: 1.7rem;
+                opacity: 0;
+            }
+            100% {
+                margin-top: 0rem;
+                opacity: 1;
+            }
+        }
+        .at1{
+            opacity: 0;
+            animation: at1 1s forwards;
+        }
+        .at2{
+            opacity: 0;
+            animation: at2 1.5s forwards;
+        }
+        .at3{
+            opacity: 0;
+            animation: at3 2s forwards;
+        }
+        .at4{
+            opacity: 0;
+            animation: at4 2.5s forwards;
+        }
+        .at5{
+            opacity: 0;
+            animation: at5 1s forwards;
+        }
+        .at6{
+            opacity: 0;
+            animation: at6 1.5s forwards;
+        }
+        .at7{
+            opacity: 0;
+            animation: at7 2s forwards;
+        }
+        .at8{
+            opacity: 0;
+            animation: at8 2.5s forwards;
+        }
+        @keyframes at1 {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes at2 {
+            0% {opacity: 0;}
+            30% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes at3 {
+            0% {opacity: 0;}
+            40% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes at4 {
+            0% {opacity: 0;}
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes at5 {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes at6 {
+            0% {opacity: 0;}
+            30% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes at7 {
+            0% {opacity: 0;}
+            40% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        @keyframes at8 {
+            0% {opacity: 0;}
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .weth{
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            animation: weth 2.5s forwards;
+        }
+        @keyframes weth {
+            0% {opacity: 0;}
+            50% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <img id="bg" src="./img/bg1.png"/>
+    <div class="status">
+        <img src="img/cloud.png" style="vertical-align:text-bottom; width: .25rem; height: .25rem;"/>
+        <span>多云</span>
+        <span>28°C ～ 12°C</span>
+        <span>{{date}}</span>
+    </div>
+    <div style="position: absolute; right: 0.5rem; top: 1rem; cursor: pointer" @click="handlerChange">
+        通知：关于2021年度个人所得税综合所得汇算清缴工作的通知
+    </div>
+    <div class="content">
+        <div class="left" style="margin-left: 20px">
+            <div class="top" style="padding: 10px; position: relative">
+                <img src="img/icon.png" style="height: 0.6rem; width: 3rem">
+                <span class="text">业务审核</span>
+                <div class="div_c">
+                    <div class="at1" style="cursor: pointer" @click="handlerChange">· 【市政】荣华中路路灯报警</div>
+                    <div class="at2" style="cursor: pointer" @click="handlerChange">· 【市政】宏达中路地下管道2处报警</div>
+                    <div class="at3" style="cursor: pointer" @click="handlerChange">· 【水务】兴盛街增加1处积水点</div>
+                    <div class="at4" style="cursor: pointer" @click="handlerChange">· 【水务】天华东路雨水倒灌</div>
+                </div>
+            </div>
+            <div class="bottom" style="padding: 10px; position: relative">
+                <img src="img/icon.png" style="height: 0.6rem; width: 3rem">
+                <span class="text">办公审核</span>
+                <div class="div_c">
+                    <div class="at5" style="cursor: pointer"  @click="handlerChange">·  自动驾驶车辆测试申请</div>
+                    <div class="at6" style="cursor: pointer"  @click="handlerChange">·  亦庄路政项目立项申请</div>
+                    <div class="at7" style="cursor: pointer"  @click="handlerChange">· 《亦庄城市大脑报价单》申请</div>
+                    <div class="at8" style="cursor: pointer"  @click="handlerChange">·  余小军的年假申请单</div>
+                </div>
+            </div>
+            <div class="weth">
+                <img src="img/weth.png">
+            </div>
+        </div>
+        <div class="middle" style="flex: 1; position: relative;">
+            <img src="img/C-wuyajiajia.gif" style="width:10.5rem;">
+            <div class="func" style="position: absolute; top: 0.5rem; left: 1rem; width: 1rem; height: 1.3rem; cursor: pointer"  @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 2.6rem; left: .8rem; width: 1rem; height: 1.3rem; cursor: pointer" @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 3.9rem; left: 2.75rem; width: 1rem; height: 1.3rem;  cursor: pointer" @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 4.0rem; left: 5.8rem; width: 1rem; height: 1.3rem; cursor: pointer" @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 2.7rem; right: 1.5rem; width: 1rem; height: 1.3rem;  cursor: pointer" @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 0.5rem; right: 2.1rem; width: 1rem; height: 1.3rem;  cursor: pointer" @click="handlerChange"></div>
+            <div class="func" style="position: absolute; top: 0.2rem; right: 4.9rem; width: 1rem; height: 1.3rem; cursor: pointer" @click="handlerChange"></div>
+        </div>
+        <div class="right" style="margin-right: 20px">
+            <div class="top" style="padding: 10px; position: relative; height: 2.5rem">
+                <div style="margin: 0.2rem 0.15rem 0.15rem 0.2rem">
+                    <img src="img/user.png" style="height: 0.5rem; width: 0.5rem; display: inline-block; vertical-align: top">
+                    <div style="display: inline-block; font-size: 0.25rem; line-height: 2; margin-left: 0.35rem; color: white">
+                        <p><span style="width: 1.2rem; display: inline-block; color: #66ccff;">姓名</span> 段**</p>
+                        <p><span style="width: 1.2rem; display: inline-block;color: #66ccff;">职务</span> 副局</p>
+                        <p><span style="width: 1.2rem; display: inline-block;color: #66ccff;">所属部门</span> 运行局</p>
+                    </div>
+                </div>
+                <div class="mymsg">
+                    <div>我的消息</div>
+                    <div style="width: 0.3rem; background-color: rgba(1,1,1,0)"></div>
+                    <div>退出</div>
+                    <div class="number">4</div>
+                </div>
+
+            </div>
+            <div class="bottom" style="padding: 10px; position: relative; height: 4rem;">
+                <img src="img/icon.png" style="height: 0.6rem; width: 3rem">
+                <span class="text">代办日历</span>
+                <div id='schedule-box' class="boxshaw"></div>
+                <div style="height: 0"><h3 id='h3Ele'></h3></div>
+                <div style="background: url('img/bg3.png') center no-repeat;width: 100%; height: 1rem; display: flex; justify-content: center; align-items: center">
+                    <div id="diC" style="color: #cccccc; font-size: 0.20rem; font-weight: 600; line-height: 2">
+                        <p>· 当日无日程安排</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box1" @click="handlerChange">运行中心</div>
+        <div class="box2" @click="handlerChange">综合管理</div>
+        <div class="box3" @click="handlerChange">数据助手</div>
+    </div>
+
+
+</div>
+
+<script src="./js/schedule.js"></script>
+<script>
+     const isLogin = sessionStorage.getItem("isLogin")
+     if(!isLogin){
+         window.location.href = "./index.html"
+     }
+
+    const date = new Date();
+    const newDate = date.getFullYear() + "-" +  ((date.getMonth() < 10 ? ("0" +  parseInt(date.getMonth() + 1) ) : date.getMonth())) + "-" + date.getDate();
+    console.log(newDate)
+    var deviceWidth
+    setHtmlFontSize()
+
+    if (window.addEventListener) {
+        window.addEventListener('resize', function () {
+            setHtmlFontSize()
+        }, false)
+    }
+    function setHtmlFontSize () {
+        // 1366是设计稿的宽度，当大于1366时采用1366宽度，比例也是除以13.66
+        deviceWidth = document.documentElement.clientWidth > 1980 ? 1980 : document.documentElement.clientWidth
+        document.getElementsByTagName('html')[0].style.cssText = 'font-size:' + deviceWidth / 19.80 + 'px !important'
+    }
+
+    new Vue({
+        el: '#app',
+        data: {x: 0, y: 0, lastResult: 0, show: true, date: new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,19).replace("T"," "),
+            content1: ["【市政】荣华中路路灯报警", "【市政】宏达中路地下管道2处报警", "【水务】兴盛街增加1处积水点", "【水务】天华东路雨水倒灌"],
+            content2: ["自动驾驶车辆测试申请", "亦庄路政项目立项申请", "《亦庄城市大脑报价单》申请", "余小军的年假申请单"],
+        },
+        mounted() {
+            const that = this
+            setInterval(function(){
+                that.date = new Date( +new Date() + 8 * 3600 * 1000 ).toJSON().substr(0,19).replace("T"," ")
+            }, 1000);
+
+        },
+        methods:{
+            handleLoad() {
+                window.location.href = "./dashbord.html"
+            },
+            handlerChange(){
+                window.location.href = "http://www.aliyun.com"
+            }
+        }
+    });
+
+    var mySchedule = new Schedule({
+        el: '#schedule-box',	//容器元素
+        date: newDate,		//当前日期
+        showToday: false,	//回到今天
+        clickCb: function (date) {
+            if(date == newDate){
+                let diC = document.getElementById("diC");
+                diC.innerHTML = "· 当日无日程安排"
+            }else {
+                diC.innerHTML = " <p>· 8:00~11:00  水务部门会议    ×</p>\n" +
+                    "  <p>· 14:00~18:00上级领导视察    √</p>"
+            }
+        },
+        nextMonthCb: function (currentYear, currentMonth) {
+            console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+        },
+        nextYeayCb: function (currentYear, currentMonth) {
+            console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+        },
+        prevMonthCb: function (currentYear, currentMonth) {
+            console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+        },
+        prevYearCb: function (currentYear, currentMonth) {
+            console.log('currentYear:' + currentYear, 'currentMonth:' + currentMonth)
+        }
+    });
+
+</script>
+</body>
+</html>
